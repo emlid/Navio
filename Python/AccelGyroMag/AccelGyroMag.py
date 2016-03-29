@@ -28,12 +28,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import spidev
 import time
+import sys
 
 from MPU9250 import MPU9250
 
 imu = MPU9250()
 
-print "Connection established: ", imu.testConnection()
+if imu.testConnection():
+    print "Connection established: True"
+else: 
+    sys.exit("Connection established: False")
 
 imu.initialize()
 
