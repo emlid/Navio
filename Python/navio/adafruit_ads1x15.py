@@ -2,7 +2,7 @@
 
 import time
 import smbus
-from Adafruit_I2C import Adafruit_I2C
+from adafruit_i2c import Adafruit_I2C
 
 # ===========================================================================
 # ADS1x15 Class

@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
 import time, signal, sys
-from Adafruit_ADS1x15 import ADS1x15
+from navio.adafruit_ads1x15 import ADS1x15
+import navio.util
+
+navio.util.check_apm()
 
 def signal_handler(signal, frame):
         print 'You pressed Ctrl+C!'

@@ -14,17 +14,19 @@ To run this example navigate to the directory containing it and run following co
 sudo python Servo.py
 """
 
-from Adafruit_PWM_Servo_Driver import PWM
+from navio.adafruit_pwm_servo_driver import PWM
 import time
 import math
 
 import sys
 
-sys.path.append("..")
-from Navio import GPIO
+import navio.gpio
+import navio.util
+
+navio.util.check_apm()
 
 #drive Output Enable in PCA low
-pin = GPIO.Pin(27)
+pin = navio.gpio.Pin(27)
 pin.write(0)
 
 PCA9685_DEFAULT_ADDRESS = 0x40
