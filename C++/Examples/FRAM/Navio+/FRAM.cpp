@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "Navio/I2Cdev.h"
 #include "Navio/MB85RC256.h"
+#include "Navio/Util.h"
 
 // 32768 bytes >> 0x8000 >> 15 bit address
 
@@ -12,6 +13,10 @@ int main()
 	uint16_t reg_address = 0;
 	uint8_t data = 0xCC;
 	bool flag = true;
+
+    if (check_apm()) {
+        return 1;
+    }
 
 	printf("Fram memory Write/Read test!\nWe will write value 0xCC to the address 0 of fram memory, and then read it:\n");
 

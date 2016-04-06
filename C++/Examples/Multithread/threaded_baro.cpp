@@ -11,6 +11,7 @@ sudo ./threaded_baro
 */
 
 #include "Navio/MS5611.h"
+#include "Navio/Util.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <pthread.h>
@@ -38,6 +39,10 @@ void * acquireBarometerData(void * barom)
 
 int main()
 {
+    if (check_apm()) {
+        return 1;
+    }
+
     MS5611 baro;
     baro.initialize();
 

@@ -16,11 +16,15 @@ make
 #include <unistd.h>
 
 #include "Navio/ADS1115.h"
+#include "Navio/Util.h"
 
-#define ARRAY_SIZE(array) (sizeof(array)/sizeof(array[0]))
 int main() {
 
     ADS1115 adc;
+
+    if (check_apm()) {
+        return 1;
+    }
 
     adc.setMode(ADS1115_MODE_SINGLESHOT);
     adc.setRate(ADS1115_RATE_860); 

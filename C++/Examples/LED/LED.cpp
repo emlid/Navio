@@ -14,7 +14,7 @@ make
 */
 
 #include <Navio/gpio.h>
-
+#include "Navio/Util.h"
 #include "Navio/PCA9685.h"
 
 using namespace Navio;
@@ -23,6 +23,10 @@ int main()
 {
     static const uint8_t outputEnablePin = RPI_GPIO_27;
 
+    if (check_apm()) {
+        return 1;
+    }
+
     Pin pin(outputEnablePin);
 
     if (pin.init()) {
@@ -30,6 +34,7 @@ int main()
         pin.write(0); /* drive Output Enable low */
     } else {
         fprintf(stderr, "Output Enable not set. Are you root?\n");
+        return 1;
     }
 
     PCA9685 pwm;

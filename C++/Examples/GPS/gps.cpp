@@ -16,6 +16,7 @@ make
 
 //#define _XOPEN_SOURCE 600
 #include "Navio/Ublox.h"
+#include "Navio/Util.h"
 
 using namespace std;
 
@@ -30,6 +31,11 @@ int main(int argc, char *argv[]){
 
     // create ublox class instance
     Ublox gps;
+
+    // check if APM is launched
+    if (check_apm()) {
+        return 1;
+    }
 
     // Here we test connection with the receiver. Function testConnection() waits for a ubx protocol message and checks it.
     // If there's at least one correct message in the first 300 symbols the test is passed

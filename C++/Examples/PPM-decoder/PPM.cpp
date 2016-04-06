@@ -18,6 +18,7 @@ sudo ./PPM
 
 #include <Navio/gpio.h>
 #include "Navio/PCA9685.h"
+#include "Navio/Util.h"
 
 //================================ Options =====================================
 
@@ -73,6 +74,10 @@ int main(int argc, char *argv[])
 {
     static const uint8_t outputEnablePin = RPI_GPIO_27;
 
+    if (check_apm()) {
+        return 1;
+    }
+    
     Pin pin(outputEnablePin);
 
     if (pin.init()) {

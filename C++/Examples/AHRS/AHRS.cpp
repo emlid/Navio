@@ -31,6 +31,7 @@ chrt -f -p 99 PID
 #include <sys/time.h>
 #include "Navio/MPU9250.h"
 #include "AHRS.hpp"
+#include "Navio/Util.h"
 
 // Objects
 
@@ -150,7 +151,11 @@ void imuLoop()
 //=============================================================================
 
 int main(int argc, char *argv[])
-{
+{   
+    if (check_apm()) {
+        return 1;
+    }
+
     //--------------------------- Network setup -------------------------------
 
     sockfd = socket(AF_INET,SOCK_DGRAM,0);

@@ -8,7 +8,7 @@ INCLUDES = -I ../.. -I$(PIGPIO_PATH)
 
 
 all:
-	$(CC) $(INCLUDES) $(LIB)  PPM.cpp $(NAVIO)/PCA9685.cpp $(NAVIO)/I2Cdev.cpp $(NAVIO)/gpio.cpp -o PPM -lrt -lpthread -lpigpio
+	$(CC) $(INCLUDES) $(LIB)  PPM.cpp $(NAVIO)/PCA9685.cpp $(NAVIO)/I2Cdev.cpp $(NAVIO)/gpio.cpp $(NAVIO)/Util.cpp -o PPM -lrt -lpthread -lpigpio
 
 clean:
 	rm PPM
