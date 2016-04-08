@@ -33,6 +33,9 @@ chrt -f -p 99 PID
 #include "AHRS.hpp"
 #include "Navio/Util.h"
 
+#define G_SI 9.80665
+#define PI   3.14159
+
 // Objects
 
 MPU9250 imu;    // MPU9250
@@ -78,6 +81,9 @@ void imuSetup()
 	for(int i = 0; i<100; i++)
 	{
 		imu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+        gx *= 180 / PI;
+        gy *= 180 / PI;
+        gz *= 180 / PI;
 		offset[0] += (-gx*0.0175);
 		offset[1] += (-gy*0.0175);
 		offset[2] += (-gz*0.0175);
@@ -110,6 +116,12 @@ void imuLoop()
 
     // Accel + gyro.
     imu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+    ax /= G_SI;
+    ay /= G_SI;
+    az /= G_SI;
+    gx *= 180 / PI;
+    gy *= 180 / PI;
+    gz *= 180 / PI;
     ahrs.updateIMU(ax, ay, az, gx*0.0175, gy*0.0175, gz*0.0175, dt);
 
     // Accel + gyro + mag. 
