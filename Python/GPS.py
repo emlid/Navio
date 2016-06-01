@@ -166,8 +166,8 @@ class NavPosllhMsg:
 		lat = "Latitude: %.6f" % (self.lat/10000000.0)
 		heightEll = "Height above Ellipsoid: %.3f m" % (self.heightEll/1000.0)
 		heightSea = "Height above mean sea level: %.3f m" % (self.heightSea/1000.0)
-		horAcc = "Horizontal Accuracy Estateimate: %.3f m" % (self.horAcc/1000.0)
-		verAcc = "Vertical Accuracy Estateimate: %.3f m" % (self.verAcc/1000.0)
+		horAcc = "Horizontal Accuracy Estimate: %.3f m" % (self.horAcc/1000.0)
+		verAcc = "Vertical Accuracy Estimate: %.3f m" % (self.verAcc/1000.0)
 		return '{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(itow, lon, lat, heightEll, heightSea, horAcc, verAcc)
 
 ubl = U_blox()
