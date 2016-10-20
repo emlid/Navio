@@ -67,7 +67,7 @@ int main()
 
         for (R = 4095; R > 0; R--)
             pwm.setPWM(2, R);
-        printf("LED is magneta\n");
+        printf("LED is magenta\n");
         sleep(1);
 
         for (B = 0; B < 4095; B++)

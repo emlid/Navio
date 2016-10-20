@@ -58,7 +58,7 @@ while (True):
 
     for R in xrange(4095, 0, -step):
         pwm.setPWM(2, 0, R)
-    print "LED is magneta"
+    print "LED is magenta"
     time.sleep(1)
 
     for B in xrange(0, 4095, step):
